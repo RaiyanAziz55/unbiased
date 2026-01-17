@@ -1,0 +1,182 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Neutral, non-partisan color scheme */
+    --background: 220 14% 96%;
+    --foreground: 224 71% 4%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71% 4%;
+
+    /* Teal primary - neutral, trustworthy */
+    --primary: 173 58% 39%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 92%;
+    --secondary-foreground: 224 71% 4%;
+
+    --muted: 220 14% 94%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 173 58% 94%;
+    --accent-foreground: 173 58% 25%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Amber for warnings/caution */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 173 58% 39%;
+
+    --radius: 0.75rem;
+
+    /* Political spectrum - neutral colors (purple to teal) */
+    --spectrum-far-left: 280 60% 50%;
+    --spectrum-left: 260 50% 55%;
+    --spectrum-center-left: 220 50% 55%;
+    --spectrum-center: 220 10% 50%;
+    --spectrum-center-right: 180 50% 45%;
+    --spectrum-right: 170 55% 40%;
+    --spectrum-far-right: 160 60% 35%;
+
+    /* Confidence indicator */
+    --confidence-high: 142 71% 45%;
+    --confidence-medium: 38 92% 50%;
+    --confidence-low: 0 84% 60%;
+
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 224 71% 4%;
+    --sidebar-primary: 173 58% 39%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 173 58% 96%;
+    --sidebar-accent-foreground: 173 58% 25%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 173 58% 39%;
+
+    /* Custom gradients */
+    --gradient-spectrum: linear-gradient(90deg, 
+      hsl(280, 60%, 50%) 0%, 
+      hsl(260, 50%, 55%) 16%, 
+      hsl(220, 50%, 55%) 33%, 
+      hsl(220, 10%, 50%) 50%, 
+      hsl(180, 50%, 45%) 66%, 
+      hsl(170, 55%, 40%) 83%, 
+      hsl(160, 60%, 35%) 100%
+    );
+    
+    --gradient-card: linear-gradient(135deg, 
+      hsl(0, 0%, 100%) 0%, 
+      hsl(220, 14%, 98%) 100%
+    );
+
+    --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+    --shadow-elevated: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  }
+
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 220 14% 96%;
+
+    --card: 224 71% 8%;
+    --card-foreground: 220 14% 96%;
+
+    --popover: 224 71% 8%;
+    --popover-foreground: 220 14% 96%;
+
+    --primary: 173 58% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 224 71% 12%;
+    --secondary-foreground: 220 14% 96%;
+
+    --muted: 224 71% 12%;
+    --muted-foreground: 220 9% 60%;
+
+    --accent: 173 40% 15%;
+    --accent-foreground: 173 58% 70%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 224 71% 15%;
+    --input: 224 71% 15%;
+    --ring: 173 58% 45%;
+
+    --sidebar-background: 224 71% 6%;
+    --sidebar-foreground: 220 14% 96%;
+    --sidebar-primary: 173 58% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 173 40% 12%;
+    --sidebar-accent-foreground: 173 58% 70%;
+    --sidebar-border: 224 71% 12%;
+    --sidebar-ring: 173 58% 45%;
+
+    --gradient-card: linear-gradient(135deg, 
+      hsl(224, 71%, 8%) 0%, 
+      hsl(224, 71%, 10%) 100%
+    );
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .spectrum-bar {
+    background: var(--gradient-spectrum);
+    @apply h-3 rounded-full;
+  }
+
+  .card-elevated {
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+    @apply rounded-xl border border-border/50;
+  }
+
+  .card-elevated:hover {
+    box-shadow: var(--shadow-elevated);
+  }
+
+  .confidence-badge-high {
+    @apply bg-[hsl(var(--confidence-high)/0.15)] text-[hsl(var(--confidence-high))] border-[hsl(var(--confidence-high)/0.3)];
+  }
+
+  .confidence-badge-medium {
+    @apply bg-[hsl(var(--warning)/0.15)] text-[hsl(var(--warning))] border-[hsl(var(--warning)/0.3)];
+  }
+
+  .confidence-badge-low {
+    @apply bg-[hsl(var(--destructive)/0.15)] text-destructive border-[hsl(var(--destructive)/0.3)];
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
