@@ -27,7 +27,7 @@ const Index = () => {
           />
 
           {/* Balance Chart */}
-          <BalanceChart />
+          {/*<BalanceChart />*/}
         </div>
 
         {/* Recent Analyses */}
