@@ -27,7 +27,7 @@ YELLOW_API_URL = "https://api.yellowcake.dev/v1/extract-stream"
 
 # Load Prompts Configuration
 try:
-    with open('python/prompts.json', 'r') as f:
+    with open('Data_Extraction/prompts.json', 'r') as f:
         PROMPTS_CONFIG = json.load(f)
 except FileNotFoundError:
     print("Warning: prompts.json not found. Defaulting to empty config.")
@@ -39,6 +39,8 @@ def identify_platform(url: str) -> str:
     url_lower = url.lower()
     if "instagram.com" in url_lower:
         return "instagram"
+    elif "facebook.com" in url_lower:
+        return "facebook"
     elif "youtube.com" in url_lower or "youtu.be" in url_lower:
         return "youtube"
     elif "tiktok.com" in url_lower:
@@ -53,6 +55,8 @@ def is_video_url(url: str) -> bool:
     """Checks if the URL is EXPLICITLY a video based on URL patterns."""
     url_lower = url.lower()
     if "instagram.com/reel/" in url_lower:
+        return True
+    if "facebook.com/reel/" in url_lower:
         return True
     if "youtube.com" in url_lower or "youtu.be" in url_lower:
         return True
@@ -70,8 +74,10 @@ def get_prompt_for_url(platform: str, url: str) -> str:
         p_type = "Short-Form" if "/shorts/" in url else "Long-Form"
     elif platform == "instagram":
         p_type = "Video" if "/reel/" in url else "Image-Text"
+    elif platform == "facebook":
+        p_type = "Video" if "/reel/" in url else "Image-Text"
     elif platform == "twitter":
-        p_type = "text-only"
+        p_type = "Image-Text"
     elif platform == "tiktok":
         p_type = "Multi-Post"
     elif platform == "reddit":
@@ -83,7 +89,7 @@ def get_prompt_for_url(platform: str, url: str) -> str:
             return entry['prompt']
     return ""
 
-def format_output(url, platform, caption=None, image_urls=None, transcription=None):
+def format_output(url, platform, caption=None, image_urls=None, image_description=None, transcription=None):
     """Standardizes the output JSON structure."""
     if image_urls is None:
         image_urls = []
@@ -94,6 +100,7 @@ def format_output(url, platform, caption=None, image_urls=None, transcription=No
         "scraped_data": {
             "caption": caption,
             "image_urls": image_urls,
+            "image_description": image_description,
             "transcription": transcription
         }
     }, indent=2)
@@ -245,7 +252,7 @@ async def route_extraction(url: str):
     is_video = is_video_url(url)
     
     # 1. Platform Videos (YouTube, TikTok, Instagram, Twitter) -> Supadata
-    if is_video and platform in ["instagram", "youtube", "tiktok", "twitter"]:
+    if is_video and platform in ["instagram", "youtube", "tiktok", "twitter", "facebook"]:
         async for result in extract_with_supadata(url):
             yield result
 
@@ -270,9 +277,10 @@ async def main():
     test_urls = [
         "https://www.instagram.com/p/DTmOe2ZACxt/?img_index=1",
         "https://www.instagram.com/reel/C1lFqShs8Kg/",
-        "https://www.youtube.com/shorts/_BVe8b_sqOc?feature=share",
-        # "https://x.com/Bannons_WarRoom/status/2012212501480370351", 
-        "https://www.tiktok.com/@studyhiro/video/7587278865341451538?is_from_webapp=1&sender_device=pc",
+        #"https://www.youtube.com/shorts/_BVe8b_sqOc?feature=share",
+        "https://x.com/Bannons_WarRoom/status/2012212501480370351", 
+        #"https://www.tiktok.com/@studyhiro/video/7587278865341451538?is_from_webapp=1&sender_device=pc",
+        "https://www.facebook.com/share/p/18Cb9dmW4L/",
     ]
 
     for url in test_urls:

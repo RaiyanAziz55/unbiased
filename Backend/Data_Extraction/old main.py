@@ -26,7 +26,7 @@ YELLOW_API_URL = "https://api.yellowcake.dev/v1/extract-stream"
 
 # Load Prompts Configuration
 try:
-    with open('python/prompts.json', 'r') as f:
+    with open('Data_Extraction/prompts.json', 'r') as f:
         PROMPTS_CONFIG = json.load(f)
 except FileNotFoundError:
     print("Warning: prompts.json not found. Defaulting to empty config.")
@@ -73,7 +73,7 @@ def get_prompt_for_url(platform: str, url: str) -> str:
         else:
             p_type = "Image-Text" 
     elif platform == "Twitter":
-        p_type = "text-only" 
+        p_type = "Image-Text" 
     elif platform == "Tiktok":
         p_type = "Multi-Post"
     elif platform == "Reddit":

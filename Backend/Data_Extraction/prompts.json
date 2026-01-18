@@ -17,12 +17,17 @@
   {
     "platform": "Instagram",
     "type": "Image-Text",
-    "prompt": "Extract the following information from this Instagram post:\n\ncaption — the full text caption.\nimage_url — the main post image returned as a downloadable URL (or Base64 if no URL can be retrieved). Return this as a single-element array.\nimage_description — an accurate, concise, and neutral description of the contents of the main image.\ntranscription — always return null unless the post is a video.\n\nIf any element cannot be found, return it as an empty string, except transcription which should be null unless video.\n\nThe output should be structured so each field becomes its own column in the result."
+    "prompt": "Extract the following information from this Instagram post:\ncaption - the full text caption.\nimage - the main post image returned as a downloadable URL (or Base64 if no URL can be retrieved).\nimage_description - a concise, neutral description of what appears in the main image.\n\nIf any element cannot be found, return it as an empty string.\n\nThe output should be structured so each field becomes its own column in the result."
+  },
+  {
+    "platform": "Facebook",
+    "type": "Image-Text",
+    "prompt": "Extract the following information from this Facebook post:\n\ncaption - the full text caption.\nimage_url - the main post image returned as a downloadable URL (or Base64 if no URL can be retrieved). Return this as a single-element array.\nimage_description - an accurate, concise, and neutral description of the contents of the main image.\ntranscription - always return null unless the post is a video.\n\nIf any element cannot be found, return it as an empty string, except transcription which should be null unless video.\n\nThe output should be structured so each field becomes its own column in the result."
   },
   {
     "platform": "Twitter",
     "type": "Image-Text",
-    "prompt": "Extract the following information from this Twitter post:\n\ncaption — the full tweet text.\nimage_url — a downloadable URL for the main image in the tweet (or Base64 if no URL can be retrieved). If multiple images exist, return only the first image URL as a single-element array.\nimage_description — an accurate, concise, and neutral description of the contents of the main image.\ntranscription — always return null unless the tweet contains a video.\n\nIf any element cannot be found, return it as an empty string, except transcription which should remain null unless video.\n\nThe output should be structured so each field becomes its own column in the result."
+    "prompt": "Extract the tweet text as caption, image - the main post image returned as a downloadable URL (or Base64 if no URL can be retrieved). image_description - a concise, neutral description of what appears in the main image. Any visible metrics (likes, retweets). The output should be structured so each field becomes its own column in the result."
   },
   {
     "platform": "Tiktok",
