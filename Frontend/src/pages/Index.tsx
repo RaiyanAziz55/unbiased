@@ -2,7 +2,7 @@ import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { FeedOverviewCard } from "@/components/dashboard/FeedOverviewCard";
 import { QuickStats } from "@/components/dashboard/QuickStats";
 import { RecentAnalyses } from "@/components/dashboard/RecentAnalyses";
-import { BalanceChart } from "@/components/dashboard/BalanceChart";
+import { MongoChart } from "@/components/charts/MongoChart";
 
 const Index = () => {
   return (
@@ -14,21 +14,22 @@ const Index = () => {
         {/* Quick Stats */}
         <QuickStats />
 
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Feed Overview */}
-          <FeedOverviewCard
-            overallScore={-15}
-            overallLabel="Center-Left"
-            confidence={0.74}
-            postsAnalyzed={47}
-            trend="left"
-            trendChange={3}
-          />
+        {/* MongoDB Chart */}
+        <MongoChart
+          chartId="a3bfd3d7-a708-4350-9fda-394643b0a0be"
+          title="Analytics Overview"
+          height="400px"
+        />
 
-          {/* Balance Chart */}
-          {/*<BalanceChart />*/}
-        </div>
+        {/* Feed Overview - Full Width */}
+        <FeedOverviewCard
+          overallScore={-15}
+          overallLabel="Center-Left"
+          confidence={0.74}
+          postsAnalyzed={47}
+          trend="left"
+          trendChange={3}
+        />
 
         {/* Recent Analyses */}
         <RecentAnalyses />

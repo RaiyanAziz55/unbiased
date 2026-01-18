@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @layer base {
   :root {
@@ -42,14 +42,14 @@
 
     --radius: 0.75rem;
 
-    /* Political spectrum - neutral colors (purple to teal) */
-    --spectrum-far-left: 280 60% 50%;
-    --spectrum-left: 260 50% 55%;
-    --spectrum-center-left: 220 50% 55%;
-    --spectrum-center: 220 10% 50%;
-    --spectrum-center-right: 180 50% 45%;
-    --spectrum-right: 170 55% 40%;
-    --spectrum-far-right: 160 60% 35%;
+    /* Political spectrum - Red (Left) to Blue (Right) */
+    --spectrum-far-left: 0 72% 50%;
+    --spectrum-left: 0 65% 55%;
+    --spectrum-center-left: 350 50% 55%;
+    --spectrum-center: 270 10% 50%;
+    --spectrum-center-right: 220 50% 55%;
+    --spectrum-right: 210 70% 50%;
+    --spectrum-far-right: 220 80% 45%;
 
     /* Confidence indicator */
     --confidence-high: 142 71% 45%;
@@ -68,13 +68,13 @@
 
     /* Custom gradients */
     --gradient-spectrum: linear-gradient(90deg, 
-      hsl(280, 60%, 50%) 0%, 
-      hsl(260, 50%, 55%) 16%, 
-      hsl(220, 50%, 55%) 33%, 
-      hsl(220, 10%, 50%) 50%, 
-      hsl(180, 50%, 45%) 66%, 
-      hsl(170, 55%, 40%) 83%, 
-      hsl(160, 60%, 35%) 100%
+      hsl(0, 72%, 50%) 0%, 
+      hsl(0, 65%, 55%) 16%, 
+      hsl(350, 50%, 55%) 33%, 
+      hsl(270, 10%, 50%) 50%, 
+      hsl(220, 50%, 55%) 66%, 
+      hsl(210, 70%, 50%) 83%, 
+      hsl(220, 80%, 45%) 100%
     );
     
     --gradient-card: linear-gradient(135deg, 

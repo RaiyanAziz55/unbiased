@@ -4,8 +4,6 @@ import {
   LayoutDashboard,
   Search,
   Users,
-  Target,
-  Sparkles,
   Shield,
   Building2,
   Settings,
@@ -37,10 +35,11 @@ const mainNavItems = [
   { title: "Track Pages", url: "/track", icon: Users },
 ];
 
-const insightsItems = [
-  { title: "Balance Tuner", url: "/balance", icon: Target },
-  { title: "Opposing Views", url: "/opposing", icon: Sparkles },
-];
+// Insights section hidden for now
+// const insightsItems = [
+//   { title: "Balance Tuner", url: "/balance", icon: Target },
+//   { title: "Opposing Views", url: "/opposing", icon: Sparkles },
+// ];
 
 const transparencyItems = [
   {
