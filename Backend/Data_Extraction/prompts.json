@@ -1,0 +1,37 @@
+[
+  {
+    "platform": "Youtube",
+    "type": "Long-Form",
+    "prompt": ""
+  },
+  {
+    "platform": "Youtube",
+    "type": "Short-Form",
+    "prompt": ""
+  },
+  {
+    "platform": "Instagram",
+    "type": "Video",
+    "prompt": ""
+  },
+  {
+    "platform": "Instagram",
+    "type": "Image-Text",
+    "prompt": "Extract the following information from this Instagram post:\ncaption — the full text caption.\nimage — the main post image returned as a downloadable URL (or Base64 if no URL can be retrieved).\nimage_description — a concise, neutral description of what appears in the main image.\n\nIf any element cannot be found, return it as an empty string.\n\nThe output should be structured so each field becomes its own column in the result."
+  },
+  {
+    "platform": "Twitter",
+    "type": "text-only",
+    "prompt": "Extract the tweet text as caption, image — the main post image returned as a downloadable URL (or Base64 if no URL can be retrieved). image_description — a concise, neutral description of what appears in the main image. Any visible metrics (likes, retweets). The output should be structured so each field becomes its own column in the result."
+  },
+  {
+    "platform": "Tiktok",
+    "type": "Multi-Post",
+    "prompt": ""
+  },
+  {
+    "platform": "Reddit",
+    "type": "Multi-Post",
+    "prompt": ""
+  }
+]
