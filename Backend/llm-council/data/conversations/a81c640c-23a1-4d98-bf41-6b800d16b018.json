@@ -1,0 +1,20 @@
+{
+  "id": "a81c640c-23a1-4d98-bf41-6b800d16b018",
+  "created_at": "2026-01-18T07:30:10.132270",
+  "title": "New Conversation",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Since no one wants to fucking say it, I will be the one to say it. We have a major homelessness problem in Toronto and no one seems to give a fuck. No one seems to care. The government is not doing shit about it. Have you noticed how many homeless people are at Union Station? And Union Station is where we have all of our games, all like the stadiums or whatever. The Seen Tower is here. So all of the tourist destinations, all the tourist attractions are all at Union Station. Imagine how surprised these people are to come to Toronto and you know, we're the six, like, you know, we're all fucking so goaded out here. And that's the first thing they see. I am so like blown away by the, yes, I'm getting angry by like the lack of care and empathy and you know, that's coming from our government. Why is no one doing anything about this? And for those who want to say, There's homeless shelters, they can go to homeless shelters. They are fucking full. Like if you, this is literally one Google search away, okay? If you search up how many beds are available in the GTA, the answer will be very, very close to zero. I don't understand where the tax dollars are going. I don't know. We're just spending our money on stupid fucking shit. Like I've lived in so many places in my life, you know? And I've never seen anything like this. And I've been here for a while and I just saw how it all just went downhill."
+    },
+    {
+      "role": "assistant",
+      "stage1": [],
+      "stage2": [],
+      "stage3": {
+        "model": "error",
+        "response": "All models failed to respond. Please try again."
+      }
+    }
+  ]
+}

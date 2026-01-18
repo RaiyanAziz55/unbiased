@@ -1,7 +1,7 @@
 import { DashboardLayout } from "@/components/layout/DashboardLayout";
 import { FeedOverviewCard } from "@/components/dashboard/FeedOverviewCard";
 import { QuickStats } from "@/components/dashboard/QuickStats";
-import { RecentAnalyses } from "@/components/dashboard/RecentAnalyses";
+import { UserPostsGrid } from "@/components/dashboard/UserPostsGrid";
 import { MongoChart } from "@/components/charts/MongoChart";
 
 const Index = () => {
@@ -11,8 +11,6 @@ const Index = () => {
       description="Understand your media consumption patterns"
     >
       <div className="space-y-6 max-w-7xl mx-auto">
-        {/* Quick Stats */}
-        <QuickStats />
 
         {/* MongoDB Chart */}
         <MongoChart
@@ -20,19 +18,8 @@ const Index = () => {
           title="Analytics Overview"
           height="400px"
         />
-
-        {/* Feed Overview - Full Width */}
-        <FeedOverviewCard
-          overallScore={-15}
-          overallLabel="Center-Left"
-          confidence={0.74}
-          postsAnalyzed={47}
-          trend="left"
-          trendChange={3}
-        />
-
-        {/* Recent Analyses */}
-        <RecentAnalyses />
+        {/* User's Analyzed Posts Grid */}
+        <UserPostsGrid limit={12} />
       </div>
     </DashboardLayout>
   );

@@ -32,7 +32,6 @@ import { cn } from "@/lib/utils";
 const mainNavItems = [
   { title: "Dashboard", url: "/", icon: LayoutDashboard },
   { title: "Analyze Post", url: "/analyze", icon: Search },
-  { title: "Track Pages", url: "/track", icon: Users },
 ];
 
 // Insights section hidden for now
@@ -160,22 +159,6 @@ export function AppSidebar() {
           ></SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu className="space-y-1"></SidebarMenu>
-          </SidebarGroupContent>
-        </SidebarGroup>
-
-        <SidebarGroup className="mt-6">
-          <SidebarGroupLabel
-            className={cn(
-              "px-3 text-xs font-medium text-muted-foreground uppercase tracking-wider",
-              collapsed && "sr-only",
-            )}
-          >
-            Transparency
-          </SidebarGroupLabel>
-          <SidebarGroupContent>
-            <SidebarMenu className="space-y-1">
-              {transparencyItems.map(renderNavItem)}
-            </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>

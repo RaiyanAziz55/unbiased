@@ -124,42 +124,42 @@ async def stage3_synthesize_final(
     stage1_results: List[Dict[str, Any]],
     stage2_results: List[Dict[str, Any]]
 ) -> Dict[str, Any]:
-    """
-    Stage 3: Chairman synthesizes final response.
-
-    Args:
-        user_query: The original user query
-        stage1_results: Individual model responses from Stage 1
-        stage2_results: Rankings from Stage 2
-
-    Returns:
-        Dict with 'model' and 'response' keys
-    """
-    # Build comprehensive context for chairman
+    
+    # 1. Format the data into readable strings
     stage1_text = "\n\n".join([
-        f"Model: {result['model']}\nResponse: {result['response']}"
+        f"EXPERT ANALYSIS ({result['model']}):\n{result['response']}"
         for result in stage1_results
     ])
 
     stage2_text = "\n\n".join([
-        f"Model: {result['model']}\nRanking: {result['ranking']}"
+        f"EXPERT RANKING ({result['model']}):\n{result['ranking']}"
         for result in stage2_results
     ])
 
+    # 2. Update the prompt to include the actual context
     chairman_prompt = f"""You are the Council Chairman. 
-Your task is to take 4 expert analyses and create a HIGHLY CONCISE executive summary.
+Your task is to synthesize 4 expert analyses of the following post into one consensus report.
+
+ORIGINAL POST CONTENT:
+"{user_query}"
+
+--- EXPERT ANALYSES ---
+{stage1_text}
+
+--- CROSS-EXAMINATION RANKINGS ---
+{stage2_text}
 
 STRICT FORMATTING RULES:
 1. HEADER: One final classification (e.g., # Classification: LEAN RIGHT).
 2. SUMMARY: One paragraph (max 60 words) explaining the 'Why'.
 3. EVIDENCE: 3-4 bullet points of the most critical evidence.
 4. WORD LIMIT: Total output must be under 200 words.
-5. NO FLUFF: Skip introductory phrases like "After careful consideration..." or "The council finds..."
+5. NO FLUFF.
 """
 
+    # 3. Ensure the message actually contains the prompt
     messages = [{"role": "user", "content": chairman_prompt}]
 
-    # Query the chairman model
     response = await query_model(CHAIRMAN_MODEL, messages)
 
     if response is None:
