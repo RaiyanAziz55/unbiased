@@ -19,7 +19,7 @@ load_dotenv()
 
 # --- Configuration Constants ---
 YELLOW_API_KEY = os.getenv("YELLOW_API_KEY_1")
-SUPADATA_API_KEY = os.getenv("SUPADATA_API_KEY_1")
+SUPADATA_API_KEY = os.getenv("SUPADATA_API_KEY_2")
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY_1")
 ELLEVENLABS_API_KEY = os.getenv("ELLEVENLABS_API_KEY")
 
@@ -27,7 +27,11 @@ YELLOW_API_URL = "https://api.yellowcake.dev/v1/extract-stream"
 
 # Load Prompts Configuration
 try:
+<<<<<<< HEAD:Backend/Data_Extraction/main.py
     with open('Data_Extraction/prompts.json', 'r') as f:
+=======
+    with open('prompts.json', 'r') as f:
+>>>>>>> 56bbf3df4dd167a28b250f3e53f2d4618a4d036d:Backend/llm-council/dataextract.py
         PROMPTS_CONFIG = json.load(f)
 except FileNotFoundError:
     print("Warning: prompts.json not found. Defaulting to empty config.")
